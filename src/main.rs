@@ -1,8 +1,9 @@
 fn main() {
     let mut s = String::from("hello");
 
-    let r1 = &mut s;
-    let r2 = &mut s;
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    let r3 = &mut s; // BIG PROBLEM
 
-    println!("{r1}, {r2}");
+    println!("{}, {}, and {}", r1, r2, r3);
 }
