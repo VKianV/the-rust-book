@@ -1,13 +1,9 @@
 fn main() {
-    let mut s = String::from("hello");
+    let reference_to_nothing = dangle();
+}
 
-    let r1 = &s; // no problem
-    let r2 = &s; // no problem
+fn dangle() -> &String {
+    let s = String::from("hello");
 
-    println!("{r1}");
-    println!("{r2}");
-    
-    let r3 = &mut s; // BIG PROBLEM
-
-    println!("{r3}");
+    &s
 }
