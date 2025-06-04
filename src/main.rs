@@ -1,25 +1,21 @@
-fn first_word(s: &String) -> usize {
+fn first_word(s: &String) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
-            return i;
+            return &s[0..i];
         }
     }
 
-    s.len()
+    &s[..]
 }
 
 fn main() {
     let mut s = String::from("hello world");
 
-    let word = first_word(&s); // word will get the value 5
+    let word = first_word(&s);
 
-    s.clear(); // this empties the String, making it equal to ""
+    s.clear(); // error!
 
-    // `word` still has the value `5` here, but `s` no longer has any content
-    // that we could meaningfully use with the value `5`, so `word` is now
-    // totally invalid!
-    println!("{s}");
-    println!("{word}")
+    println!("the first word is: {word}");
 }
