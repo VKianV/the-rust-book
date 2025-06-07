@@ -1,21 +1,13 @@
-fn first_word(s: &String) -> &str {
-    let bytes = s.as_bytes();
+fn main() {
+    let width1 = 30;
+    let height1 = 50;
 
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return &s[0..i];
-        }
-    }
-
-    &s[..]
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(width1, height1)
+    );
 }
 
-fn main() {
-    let mut s = String::from("hello world");
-
-    let word = first_word(&s);
-
-    s.clear(); // error!
-
-    println!("the first word is: {word}");
+fn area(width: u32, height: u32) -> u32 {
+    width * height
 }
