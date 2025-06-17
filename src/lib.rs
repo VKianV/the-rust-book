@@ -1,6 +1,10 @@
- mod front_of_house;
-
- fn eat_at_restaurant() {
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+// -- snip --
+pub fn eat_at_restaurant() {
     // Absolute path
     crate::front_of_house::hosting::add_to_waitlist();
 
