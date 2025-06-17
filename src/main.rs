@@ -1,9 +1,13 @@
 fn main() {
-    let mut v = Vec::new();
+    let v = vec![1,2,3,4,5];
 
-    v.push(1);
-    v.push(2);
-    v.push(3);
-    v.push(4);
-    v.push(5);
+    let third = &v[2];
+    println!("the third element is {}",third);
+
+    let third = v.get(2);
+
+    match third{
+        Some(third) => println!("the element is {}",third),
+        None => println!("there was no third element")
+    }
 }
