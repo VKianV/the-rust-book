@@ -1,12 +1,7 @@
+use std::collections::HashMap;
 fn main() {
-    let s = "‍";
+    let mut scores = HashMap::new();
 
-    println!("with this charecters");
-    for c in s.chars() {
-        println!("{}", c);
-    }
-    println!("with this bytes");
-    for c in s.bytes() {
-        println!("{}", c);
-    }
+    scores.insert("Blue".to_string(), 10);
+    scores.insert("Red".to_string(), 60);
 }
