@@ -1,12 +1,12 @@
 fn main() {
     let s = "‍";
 
-    println!("with this charecters")
+    println!("with this charecters");
     for c in s.chars() {
-        println!("{}", c)
+        println!("{}", c);
     }
-    println!("with this bytes")
+    println!("with this bytes");
     for c in s.bytes() {
-        println!("{}", c)
+        println!("{}", c);
     }
 }
