@@ -1,5 +1,4 @@
 fn main() {
-    let data = "initial contents";
-    let s = data.to_string();
-    let s = "initial contents".to_string();
+    let mut s1 = "foo".to_string();
+    let s2 = "bar";
 }
