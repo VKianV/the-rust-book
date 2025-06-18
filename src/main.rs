@@ -1,8 +1,12 @@
 fn main() {
-    let s1 = String::from("tic");
-    let s2 = String::from("tac");
-    let s3 = String::from("toe");
+    let s = "‍";
 
-    let s = format!("{}-{}-{}", &s1, &s2, &s3);
-    println!("{}", s);
+    println!("with this charecters")
+    for c in s.chars() {
+        println!("{}", c)
+    }
+    println!("with this bytes")
+    for c in s.bytes() {
+        println!("{}", c)
+    }
 }
