@@ -1,11 +1,12 @@
 use std::collections::HashMap;
 fn main() {
-    let mut scores = HashMap::new();
+    let text = "By default, HashMap uses a hashing function called SipHash that can provide resistance to denial-of-service (DoS) attacks involving hash tables1.";
+    let mut map = HashMap::new();
 
-    scores.insert("Blue".to_string(), 10);
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
 
-    scores.entry("Blue".to_string()).or_insert(50);
-    scores.entry("Yellow".to_string()).or_insert(50);
-
-    println!("{scores:?}")
+    println!("{map:#?}")
 }
