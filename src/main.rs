@@ -2,8 +2,10 @@ use std::collections::HashMap;
 fn main() {
     let mut scores = HashMap::new();
 
-    scores.insert(String::from("Blue"), 10);
-    scores.insert(String::from("Blue"), 25);
+    scores.insert("Blue".to_string(), 10);
 
-    println!("{scores:?}");
+    scores.entry("Blue".to_string()).or_insert(50);
+    scores.entry("Yellow".to_string()).or_insert(50);
+
+    println!("{scores:?}")
 }
