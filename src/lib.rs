@@ -1,6 +1,6 @@
 use std::{any::type_name, fmt::Debug};
 
-pub fn find_largest(input: &[i32]) -> &i32 {
+pub fn find_largest<T: PartialOrd>(input: &[T]) -> &T {
     let mut largest = &input[0];
     for number in input {
         if number > largest {
@@ -10,10 +10,10 @@ pub fn find_largest(input: &[i32]) -> &i32 {
     largest
 }
 
-pub fn debug<T: Debug>(value: T) {
+pub fn debug<G: Debug>(value: G) {
     println!(
         "the value is {:#?}. The type is: {}",
         value,
-        type_name::<T>()
+        type_name::<G>()
     );
 }
