@@ -1,5 +1,19 @@
-use std::{fs::read_to_string, io};
+use std::{any::type_name, fmt::Debug};
 
-pub fn read_username_from_file() -> Result<String, io::Error> {
-    read_to_string("user_file.txt")
+pub fn find_largest(input: &[i32]) -> &i32 {
+    let mut largest = &input[0];
+    for number in input {
+        if number > largest {
+            largest = number;
+        }
+    }
+    largest
+}
+
+pub fn debug<T: Debug>(value: T) {
+    println!(
+        "the value is {:#?}. The type is: {}",
+        value,
+        type_name::<T>()
+    );
 }
