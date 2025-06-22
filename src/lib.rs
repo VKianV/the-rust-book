@@ -1,28 +1,25 @@
 use std::{any::type_name, fmt::Debug};
 
 #[derive(Debug)]
-pub struct Point<G> {
-    x: G,
-    y: G,
+pub struct Point<G1, G2> {
+    x: G1,
+    y: G2,
 }
 
-impl<G: Clone> Point<G> {
-    pub fn new(x: G, y: G) -> Self {
+impl<G1, G2> Point<G1, G2> {
+    pub fn new(x: G1, y: G2) -> Self {
         Self { x, y }
     }
 
-    pub fn sauere(size: G) -> Self {
-        Self {
-            x: size.clone(),
-            y: size,
-        }
+    pub fn sauere(size: ) -> Self {
+        Self { x: size, y: size }
     }
 
-    pub fn x(&self) -> &G {
+    pub fn x(&self) -> &G1 {
         &self.x
     }
 
-    pub fn y(&self) -> &G {
+    pub fn y(&self) -> &G2 {
         &self.y
     }
 }
