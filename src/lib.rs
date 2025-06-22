@@ -1,13 +1,8 @@
 use std::{any::type_name, fmt::Debug};
 
-pub fn find_largest<T: PartialOrd>(input: &[T]) -> &T {
-    let mut largest = &input[0];
-    for number in input {
-        if number > largest {
-            largest = number;
-        }
-    }
-    largest
+pub struct Point<G1, G2> {
+    pub x: G1,
+    pub y: G2,
 }
 
 pub fn debug<G: Debug>(value: G) {
