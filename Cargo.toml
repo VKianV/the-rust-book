@@ -1,11 +1,12 @@
+[package]
+name = "the_book"
+version = "0.1.0"
+edition = "2024"
+
 [workspace]
 resolver = "3"
 members = ["add_one", "add_two", "adder"]
 
 [dependencies]
-
-[profile.dev]
-opt-level = "s"
-
-[profile.release]
-panic = 'abort'
+add_one = { path = "add_one" }
+add_two = { path = "add_two" }
