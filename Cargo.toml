@@ -3,6 +3,10 @@ name = "the_book"
 version = "0.1.0"
 edition = "2024"
 
+[workspace]
+resolver = "3"
+members = ["add_one", "add_two", "adder"]
+
 [dependencies]
 
 [profile.dev]
