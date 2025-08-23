@@ -1,5 +1,5 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+pub fn add_one(number: i32) -> u64 {
+    number + 1
 }
 
 #[cfg(test)]
@@ -8,7 +8,7 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        let result = add_one(2);
+        assert_eq!(result, 3);
     }
 }
