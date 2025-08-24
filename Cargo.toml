@@ -3,11 +3,4 @@ name = "the_book"
 version = "0.1.0"
 edition = "2024"
 
-[workspace]
-resolver = "3"
-members = ["add_one", "add_two", "adder"]
-
 [dependencies]
-add_one = { path = "add_one" }
-add_two = { path = "add_two" }
-rand = "0.9.2"
