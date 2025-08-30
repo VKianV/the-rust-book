@@ -36,3 +36,5 @@ where
         }
     }
 }
+fn main() {}
+
