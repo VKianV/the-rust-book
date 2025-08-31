@@ -7,7 +7,6 @@ pub struct LimitTracker<'a, T: Messenger> {
     value: usize,
     max: usize,
 }
-
 impl<'a, T> LimitTracker<'a, T>
 where
     T: Messenger,
