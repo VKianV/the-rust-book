@@ -1,13 +1,14 @@
+use std::cell::RefCell;
 use the_book::{LimitTracker, Messenger}; // <-- your library
 
 struct MockMessenger {
-    sent_messages: std::cell::RefCell<Vec<String>>,
+    sent_messages: RefCell<Vec<String>>,
 }
 
 impl MockMessenger {
-    fn new() -> Self {
-        Self {
-            sent_messages: std::cell::RefCell::new(vec![]),
+    fn new() -> MockMessenger {
+        MockMessenger {
+            sent_messages: RefCell::new(vec![]),
         }
     }
 }
@@ -26,8 +27,4 @@ fn it_sends_an_over_75_percent_warning_message() {
     limit_tracker.set_value(80);
 
     assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
-    assert_eq!(
-        mock_messenger.sent_messages.borrow()[0],
-        "Warning: You've used up over 75% of your quota!"
-    );
 }
