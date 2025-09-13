@@ -1,11 +1,17 @@
-use trpl::Html;
+use std::time::Duration;
 
-fn main() {}
+fn main() {
+    trpl::run(async {
+        trpl::spawn_task(async {
+            for i in 1..10 {
+                println!("hi number {i} from the first task!");
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        });
 
-async fn page_title(url: &str) -> Option<String> {
-    let response = trpl::get(url).await;
-    let response_text = response.text().await;
-    Html::parse(&response_text)
-        .select_first("title")
-        .map(|title_element| title_element.inner_html())
+        for i in 1..5 {
+            println!("hi number {i} from the second task!");
+            trpl::sleep(Duration::from_millis(500)).await;
+        }
+    });
 }
