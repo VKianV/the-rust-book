@@ -6,7 +6,6 @@ fn main() {
 
         let tx1 = tx.clone();
         let tx1_fut = pin!(async move {
-            // --snip--
             let vals = vec![
                 String::from("hi"),
                 String::from("from"),
@@ -21,14 +20,12 @@ fn main() {
         });
 
         let rx_fut = pin!(async {
-            // --snip--
             while let Some(value) = rx.recv().await {
                 println!("received '{value}'");
             }
         });
 
         let tx_fut = pin!(async move {
-            // --snip--
             let vals = vec![
                 String::from("more"),
                 String::from("messages"),
