@@ -1,10 +1,10 @@
-use std::time::Duration;
+use std::{pin::Pin, time::Duration};
 
 fn main() {
     trpl::run(async {
         let (tx, mut rx) = trpl::channel();
-        let tx1 = tx.clone();
 
+        let tx1 = tx.clone();
         let tx1_fut = async move {
             let vals = vec![
                 String::from("hi"),
@@ -15,7 +15,7 @@ fn main() {
 
             for val in vals {
                 tx1.send(val).unwrap();
-                trpl::sleep(Duration::from_millis(500)).await;
+                trpl::sleep(Duration::from_secs(1)).await;
             }
         };
 
@@ -35,10 +35,13 @@ fn main() {
 
             for val in vals {
                 tx.send(val).unwrap();
-                trpl::sleep(Duration::from_millis(1500)).await;
+                trpl::sleep(Duration::from_secs(1)).await;
             }
         };
 
-        trpl::join!(tx1_fut, tx_fut, rx_fut);
+        let futures: Vec<Pin<Box<dyn Future<Output = ()>>>> =
+            vec![Box::pin(tx1_fut), Box::pin(rx_fut), Box::pin(tx_fut)];
+
+        trpl::join_all(futures).await;
     });
 }
