@@ -1,11 +1,16 @@
+extern crate trpl; // required for mdbook test
+
 use std::{pin::pin, time::Duration};
+
 use trpl::{ReceiverStream, Stream, StreamExt};
 
 fn main() {
     trpl::run(async {
-        let mut messages = pin!(get_messages().timeout(Duration::from_millis(200)));
+        let messages = get_messages().timeout(Duration::from_millis(200));
+        let intervals = get_intervals();
+        let merged = messages.merge(intervals);
 
-        while let Some(result) = messages.next().await {
+        while let Some(result) = merged.next().await {
             match result {
                 Ok(message) => println!("{message}"),
                 Err(reason) => eprintln!("Problem: {reason:?}"),
@@ -36,7 +41,7 @@ fn get_intervals() -> impl Stream<Item = u32> {
     trpl::spawn_task(async move {
         let mut count = 0;
         loop {
-            trpl::sleep(Duration::from_millis(1)).await;
+            trpl::yield_now().await;
             count += 1;
             tx.send(count).unwrap();
         }
