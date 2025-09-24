@@ -1,27 +1,19 @@
-pub trait Draw {
-    fn draw(&self);
+pub struct Post {
+    state: Option<Box<dyn State>>,
+    content: String,
 }
 
-pub struct Screen {
-    pub components: Vec<Box<dyn Draw>>,
-}
-
-impl Screen {
-    pub fn run(&self) {
-        for component in self.components.iter() {
-            component.draw();
+impl Post {
+    pub fn new() -> Post {
+        Post {
+            state: Some(Box::new(Draft {})),
+            content: String::new(),
         }
     }
 }
 
-pub struct Button {
-    pub width: u32,
-    pub height: u32,
-    pub label: String,
-}
+trait State {}
 
-impl Draw for Button {
-    fn draw(&self) {
-        // code to actually draw a button
-    }
-}
+struct Draft {}
+
+impl State for Draft {}
