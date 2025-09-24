@@ -1,4 +1,4 @@
-use the_book::{Button, Draw, Screen};
+use the_rust_book::{Button, Draw, Screen};
 
 struct SelectBox {
     width: u32,
