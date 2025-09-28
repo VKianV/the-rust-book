@@ -1,6 +1,9 @@
 trait State {
     fn request_review(self: Box<Self>) -> Box<dyn State>;
     fn approve(self: Box<Self>) -> Box<dyn State>;
+    fn content<'a>(&self, _post: &'a Post) -> &'a str {
+        ""
+    }
 }
 
 pub struct Post {
@@ -21,7 +24,7 @@ impl Post {
     }
 
     pub fn content(&self) -> &str {
-        ""
+        self.state.as_ref().unwrap().content(self)
     }
 
     pub fn request_review(&mut self) {
@@ -34,6 +37,12 @@ impl Post {
         if let Some(s) = self.state.take() {
             self.state = Some(s.approve())
         }
+    }
+}
+
+impl Default for Post {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -70,5 +79,9 @@ impl State for Published {
 
     fn approve(self: Box<Self>) -> Box<dyn State> {
         self
+    }
+
+    fn content<'a>(&self, post: &'a Post) -> &'a str {
+        &post.content
     }
 }
