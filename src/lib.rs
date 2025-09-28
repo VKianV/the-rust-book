@@ -14,7 +14,7 @@ pub struct Post {
 impl Post {
     pub fn new() -> Post {
         Post {
-            state: Some(Box::new(Draft {})),
+            state: Some(Box::new(Draft)),
             content: String::new(),
         }
     }
@@ -46,7 +46,7 @@ impl Default for Post {
     }
 }
 
-struct Draft {}
+struct Draft;
 
 impl State for Draft {
     fn request_review(self: Box<Self>) -> Box<dyn State> {
@@ -58,7 +58,7 @@ impl State for Draft {
     }
 }
 
-struct PendingReview {}
+struct PendingReview;
 
 impl State for PendingReview {
     fn request_review(self: Box<Self>) -> Box<dyn State> {
@@ -70,7 +70,7 @@ impl State for PendingReview {
     }
 }
 
-struct Published {}
+struct Published;
 
 impl State for Published {
     fn request_review(self: Box<Self>) -> Box<dyn State> {
