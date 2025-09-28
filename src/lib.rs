@@ -50,7 +50,7 @@ struct Draft;
 
 impl State for Draft {
     fn request_review(self: Box<Self>) -> Box<dyn State> {
-        Box::new(PendingReview {})
+        Box::new(PendingReview)
     }
 
     fn approve(self: Box<Self>) -> Box<dyn State> {
@@ -66,7 +66,7 @@ impl State for PendingReview {
     }
 
     fn approve(self: Box<Self>) -> Box<dyn State> {
-        Box::new(Published {})
+        Box::new(Published)
     }
 }
 
