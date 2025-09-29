@@ -6,6 +6,7 @@ trait State {
     }
 }
 
+#[derive(Default)]
 pub struct Post {
     state: Option<Box<dyn State>>,
     content: String,
@@ -37,12 +38,6 @@ impl Post {
         if let Some(s) = self.state.take() {
             self.state = Some(s.approve())
         }
-    }
-}
-
-impl Default for Post {
-    fn default() -> Self {
-        Self::new()
     }
 }
 
