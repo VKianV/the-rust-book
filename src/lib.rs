@@ -19,7 +19,6 @@ pub struct DraftPost {
 }
 
 impl DraftPost {
-    // --snip--
     pub fn add_text(&mut self, text: &str) {
         self.content.push_str(text);
     }
