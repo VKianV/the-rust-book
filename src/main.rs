@@ -1,12 +1,4 @@
 fn main() {
-    let (tx, rx) = std::sync::mpsc::channel();
-    std::thread::spawn(move || {
-        for val in [1, 2, 3] {
-            tx.send(val);
-        }
-    });
-
-    while let Ok(value) = rx.recv() {
-        println!("{value}");
-    }
+    let some_option_value: Option<i32> = None;
+    let Some(x) = some_option_value;
 }
