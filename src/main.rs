@@ -1,12 +1,12 @@
+struct Point {
+    x: i32,
+    y: i32,
+}
+
 fn main() {
-    let x = Some(5);
-    let y = 10;
+    let p = Point { x: 0, y: 7 };
 
-    match x {
-        Some(50) => println!("Got 50"),
-        Some(y) => println!("Matched, y = {y}"),
-        _ => println!("Default case, x = {x:?}"),
-    }
-
-    println!("at the end: x = {x:?}, y = {y}");
+    let Point { x: a, y: b } = p;
+    assert_eq!(0, a);
+    assert_eq!(7, b);
 }
