@@ -6,7 +6,7 @@ struct Point {
 fn main() {
     let p = Point { x: 0, y: 7 };
 
-    let Point { x: a, y: b } = p;
+    let Point { a, b } = p;
     assert_eq!(0, a);
     assert_eq!(7, b);
 }
