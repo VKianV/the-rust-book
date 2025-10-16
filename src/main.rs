@@ -1,4 +1,5 @@
 fn main() {
-    let mut x = 42;
-    println!("{x}");
+    let mut num = 5;
+    let r1 = &raw const num;
+    let r2 = &raw mut num;
 }
