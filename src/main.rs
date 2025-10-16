@@ -1,5 +1,4 @@
 fn main() {
-    let mut num = 5;
-    let r1 = &raw const num;
-    let r2 = &raw mut num;
+    let address = 0x012345usize;
+    let r = address as *const i32;
 }
