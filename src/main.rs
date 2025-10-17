@@ -1,21 +1,10 @@
 fn main() {
-    // let mut num = 5;
+    let mut v = vec![1, 2, 3, 4, 5, 6];
 
-    let mut num2 = 50;
+    let r = &mut v[..];
 
-    // let r1 = &raw const num;
-    // let r2 = &raw mut num;
+    let (a, b) = r.split_at_mut(3);
 
-    let r3 = &num2;
-    let r4 = &mut num2;
-
-    // unsafe {
-    //     println!("r1 is: {:?}", *
-    //
-    //     r1);
-    //     println!("r2 is: {:?}", *r2);
-    // }
-
-    println!("r3 is: {}", r3);
-    println!("r4 is: {}", r4);
+    assert_eq!(a, &mut [1, 2, 3]);
+    assert_eq!(b, &mut [4, 5, 6]);
 }
