@@ -1,24 +1,25 @@
-struct Counter {
-    count: u32,
+use std::ops::Add;
+
+#[derive(Debug, Copy, Clone, PartialEq)]
+struct Point {
+    x: i32,
+    y: i32,
 }
 
-impl Counter {
-    fn new() -> Counter {
-        Counter { count: 0 }
-    }
-}
+impl Add for Point {
+    type Output = Point;
 
-impl Iterator for Counter {
-    type Item = u32;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        // --snip--
-        if self.count < 5 {
-            self.count += 1;
-            Some(self.count)
-        } else {
-            None
+    fn add(self, other: Point) -> Self {
+        Self {
+            x: self.x + other.x,
+            y: self.y + other.y,
         }
     }
 }
-fn main() {}
+
+fn main() {
+    assert_eq!(
+        Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
+        Point { x: 3, y: 3 }
+    );
+}
