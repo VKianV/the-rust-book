@@ -1,25 +1,20 @@
 use std::ops::Add;
 
-#[derive(Debug, Copy, Clone, PartialEq)]
-struct Point {
-    x: i32,
-    y: i32,
-}
+#[derive(Debug)]
+struct Millimeters(u32);
+struct Meters(u32);
 
-impl Add for Point {
-    type Output = Point;
+impl Add<Meters> for Millimeters {
+    type Output = Millimeters;
 
-    fn add(self, other: Point) -> Self {
-        Self {
-            x: self.x + other.x,
-            y: self.y + other.y,
-        }
+    fn add(self, other: Meters) -> Millimeters {
+        Millimeters(self.0 + (other.0 * 1000))
     }
 }
 
 fn main() {
-    assert_eq!(
-        Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
-        Point { x: 3, y: 3 }
-    );
+    let (ten_milis, one_met) = (Millimeters(10), Meters(1));
+    let result = ten_milis + one_met;
+
+    println!("Your value should be such a thing: {:?}", &result);
 }
