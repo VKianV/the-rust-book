@@ -1,20 +1,34 @@
-use std::ops::Add;
+trait Pilot {
+    fn fly(&self);
+}
 
-#[derive(Debug)]
-struct Millimeters(u32);
-struct Meters(u32);
+trait Wizard {
+    fn fly(&self);
+}
 
-impl Add<Meters> for Millimeters {
-    type Output = Millimeters;
+struct Human;
 
-    fn add(self, other: Meters) -> Millimeters {
-        Millimeters(self.0 + (other.0 * 1000))
+impl Pilot for Human {
+    fn fly(&self) {
+        println!("This is your captain speaking.");
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Up!");
+    }
+}
+
+impl Human {
+    fn fly(&self) {
+        println!("*waving arms furiously*");
     }
 }
 
 fn main() {
-    let (ten_milis, one_met) = (Millimeters(10), Meters(1));
-    let result = ten_milis + one_met;
-
-    println!("Your value should be such a thing: {:?}", &result);
+    let person = Human;
+    Pilot::fly(&person);
+    Wizard::fly(&person);
+    person.fly();
 }
