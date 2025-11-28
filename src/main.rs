@@ -1,13 +1,14 @@
-fn main() {
-    type Thunk = Box<dyn Fn() + Send + 'static>;
-
-    let f: Thunk = Box::new(|| println!("hi"));
-
-    fn takes_long_type(f: Thunk) {
-        // --snip--
-    }
-
-    fn returns_long_type() -> Thunk {
-        // --snip--
-    }
+#[macro_export]
+macro_rules! vec {
+    ( $( $x:expr ),* ) => {
+        {
+            let mut temp_vec = Vec::new();
+            $(
+                temp_vec.push($x);
+            )*
+            temp_vec
+        }
+    };
 }
+
+fn main() {}
