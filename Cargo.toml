@@ -1,6 +1,3 @@
-[package]
-name = "the_rust_book"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
+[workspace]
+resolver = "3"
+members = ["hello_macro", "hello_macro_derive","the_book"]
