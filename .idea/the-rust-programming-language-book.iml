@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/benches" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/hello_macro/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/hello_macro_derive/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/the_book/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/the_book/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/hello_macro/target" />
