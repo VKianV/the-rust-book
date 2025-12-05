@@ -1,6 +1,3 @@
-[package]
-name = "the-rust-programming-language-book"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
+[workspace]
+resolver = "3"
+members = ["crates/hello_macro", "crates/hello_macro_derive","crates/the_book"]
